@@ -1,0 +1,26 @@
+DOM planning
+
+DONE #header
+
+DONE #logo
+
+DONE .sidebarNav
+	#templates
+		.pageButton
+			#plusButton
+				onHover: lighten up
+		.addNewPage
+			form, takes in text
+			add <div id=.pageButton> to DOM
+
+	#elements
+		#elementsBox
+			#title
+			#text
+			#image
+			#nav
+	#settings
+		site grid (toggle button)
+
+content
+	page

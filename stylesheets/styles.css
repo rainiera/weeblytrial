@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'ProximaNova';
+    src: "fonts/ProximaNova-Sbold.otf", format('opentype');
+}
+
+#header {
+    background: url(images/Header-BG.png);
+    height: 41px;
+}
+
+#logo {
+    position: relative;
+    top:8px;
+    left:32px;
+}
+
+.sidebarNav {
+    background: url(images/BG-copy-4.png);
+    width: 252px;
+    height: 100%;
+}
+
+.sidebarTab {
+    background: url(images/Rectangle-8-copy-2.png);
+    height:32px;
+}
+
+.sidebarTabText {
+    color: #9cb3ca;
+    font: 'ProximaNova';
+    text-align: center;
+}
+
+.sidebarElementContainer{
+    position:relative;
+}
+
+.pageButtonContainer {
+    margin-left: 32px;
+    margin-top: 100px;
+}
