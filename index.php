@@ -1,8 +1,4 @@
-<?php
-session_start();
-?>
-
-
+<?php session_start(); ?>
 
 <html>
 
@@ -16,28 +12,28 @@ session_start();
 </head>
 
 <body>
-    <?php
-//$numPages = 1;
-//$_SESSION["$numPages"] = 1;
-//echo numPages;
+    <?php //$numPages=1 ; //$_SESSION[ "$numPages"]=1 ; //echo numPages; //echo mt_rand() ?>
 
-
-//echo mt_rand()
-
-
-    ?>
-    
     <div id="header">
         <img src="stylesheets/sprites/Weebly-Logo.png" id="logo">
     </div>
+
+    <!-- START SIDEBAR NAV -->
+
     <div class="sidebarNav">
+
+        <div class="horizDivider"></div>
 
         <div class="sidebarTab">
             <div class="sidebarTabText">
                 TEMPLATES
             </div>
         </div>
+
+        <div class="horizDivider"></div>
+
         <div class="sidebarElementContainer">
+
             <div class="pageButtonContainer">
                 <div class="pageButton" id="currentPage">
                     <div class="pageText">
@@ -50,57 +46,81 @@ session_start();
                     </div>
                 </div>
             </div>
+
         </div>
 
+        <div class="horizDivider"></div>
 
         <div class="sidebarTab">
             <div class="sidebarTabText">
                 ELEMENTS
             </div>
         </div>
-            <div class="sidebarElementContainer">
-                <div class="elementsTile">
-                    <div class="tileImgContainer">
-                       <div id="titleTile"></div>
-                    </div>
-                </div>
-                <div class="elementsTile">
-                    <div class="tileImgContainer">
-                       <div id="textTile"></div>
-                    </div>
-                </div>
-                <div class="elementsTile">
-                    <div class="tileImgContainer">
-                       <div id="imageTile"></div>
-                    </div>
-                </div>
-                <div class="elementsTile">
-                    <div class="tileImgContainer">
-                       <div id="navTile"></div>
-                    </div>
-                </div>
+
+        <div class="horizDivider"></div>
+
+        <div class="sidebarElementContainer">
+            <div class="elementsTile">
+                <img src="stylesheets/sprites/Element-IconsTitle.png" class="tileImg">
+                <div class="elementsTileText">TITLE</div>
             </div>
-<!--
+
+<!--             <div class="vertDivider"></div>
+ -->
+            <div class="elementsTile">
+                <img src="stylesheets/sprites/Element-IconsText.png" class="tileImg">
+                <div class="elementsTileText">TEXT</div>
+            </div>
+
+        <div class="horizDivider"></div>
+
+            <div class="elementsTile">
+                <img src="stylesheets/sprites/Element-IconsImage.png" class="tileImg">
+                <div class="elementsTileText">IMAGE</div>
+            </div>
+
+
+            <div class="elementsTile">
+                <img src="stylesheets/sprites/Element-IconsNav.png" class="tileImg">
+                <div class="elementsTileText">NAV</div>
+            </div>
+
+        </div>
+
+        <div class="horizDivider"></div>
+
+
         <div class="sidebarTab">
             <div class="sidebarTabText">
                 SETTINGS
             </div>
+        </div>
+
+        <div class="horizDivider"></div>
+
             <div class="sidebarElementContainer">
-                <div class="settingsTabContainer">
-                    <div id="settingsTabText">
-                        SITE GRID
-                    </div>
+                <div id="settingsTabText">
+                    SITE GRID
                 </div>
                 <div id="settingsTabToggleContainer">
                     <img src="images/Off.png" id="off">
                 </div>
             </div>
         </div>
--->
+
     </div>
+
+    <!-- START MAIN CONTENT -->
+
     <div id="mainContentContainer">
         <div id="mainContentPageButtonContainer">
-            Page button.
+            <div id="mainContentPageButtonContainer">
+                <div class="activePageButton">
+                    <div class="activePageButtonText">
+                        PAGE
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
