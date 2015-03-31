@@ -72,16 +72,24 @@ body {
     color: #9cb3ca;
 }
 
+#addNewPageText {
+    color: #9cb3ca;
+    padding-top: 10px;
+    padding-left: 17px;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 13px;
+}
 
 
 /* START ELEMENTS STYLES */
 
 .tileImgContainer {
-    position: absolute;
+    position: relative;
     left: 32px;
     top: 22px;
-    width: 52px;
-    height: 54px;
+    width: 63px;
+    height: 60px;
+    background-image: url(sprites/Element-Icons.png);
 }
 
 .tileTextContainer {
@@ -101,13 +109,13 @@ body {
 
 #titleTile {
     float: left;
-    background: url(sprites/Element-Icons.png) 9 8;
+    background-position: 9px 8px;
 /*    background: url(sprites/Element-IconsTitle.png);*/
 }
 
 #textTile {
     float: right;
-/*    background: url(sprites/Element-Icons.png) 63 8;*/
+    background-position: 8px 63px;
 /*    background: url(sprites/Element-IconsText.png);*/
 }
 

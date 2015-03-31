@@ -45,7 +45,7 @@ session_start();
                     </div>
                 </div>
                 <div class="pageButton" id="addNewPage">
-                    <div class="pageText">
+                    <div id="addNewPageText">
                         ADD NEW PAGE
                     </div>
                 </div>
@@ -65,10 +65,19 @@ session_start();
                     </div>
                 </div>
                 <div class="elementsTile">
+                    <div class="tileImgContainer">
+                       <div id="textTile"></div>
+                    </div>
                 </div>
                 <div class="elementsTile">
+                    <div class="tileImgContainer">
+                       <div id="imageTile"></div>
+                    </div>
                 </div>
                 <div class="elementsTile">
+                    <div class="tileImgContainer">
+                       <div id="navTile"></div>
+                    </div>
                 </div>
             </div>
 <!--
