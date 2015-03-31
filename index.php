@@ -39,14 +39,24 @@
 
     function countPages($result) {
         $numPages = 0;
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_row($result)) {
             $numPages++;
         }
         return $numPages;
     }
 
+    function makePageNameArray($result) {
+        $pageNames = array();
+        while ($row = mysqli_fetch_row($result)) {
+            array_push($pageNames, $row[2]);
+        }
+        return $pageNames;
+    }
 
+    $result = mysqli_query($connection, $query); // creates a resource object
     $numPages = countPages($result);
+    $result = mysqli_query($connection, $query); // creates a resource object
+    $pageNames = makePageNameArray($result);
 
 ?>
 
@@ -122,7 +132,7 @@
                         $query = "INSERT INTO pages (";
                         $query .= "user_id, page_name, position, visible, content";
                         $query .= ") VALUES (";
-                        $query .= "{$user_id}, '{$newPageName}', {$position}, {$visible}, {$content}";
+                        $query .= "{$user_id}, '{$newPageName}', {$position}, {$visible}, 'default'";
                         $query .= ")";
                         $result = mysqli_query($connection, $query);
                         checkQuerySuccess($result);
@@ -134,6 +144,12 @@
                         pageDBInsertion($newPageName, 1, 1, "default", $connection, 1);
                     }
 
+                if($numPages > 0) {
+                    foreach($pageNames as $name) {
+                        addpageButton($name);
+                    }
+                }
+                
                 ?>
 
 
@@ -218,7 +234,6 @@
                     add a new inactive page -->
 
                 <?php
-
                 // $newPageName is an optional parameter
                 function addInactivePage($newPageName = "PAGE") {
                     $inactivePageButton = "<div class=\"inactivePageButton\">
@@ -230,15 +245,15 @@
                 }
 
 
-                if($numPages > 1) {
-                    for ($i = 0; $i < $numPages - 1; $i++) {
-                        addInactivePage();
+                if($numPages > 0) {
+                    foreach($pageNames as $name ) {
+                        addInactivePage($name);
                     }
                 }
 
+                // clear superglobal so it doesn't make 1 + 2 + 3 + 4 entries
+
                 $_POST = array();
-
-
                 ?>
 
             </div>
