@@ -1,10 +1,9 @@
-@font-face {
-    font-family: 'ProximaNova';
-    src: "fonts/ProximaNova-Sbold.otf", format('opentype');
+
+body {
 }
 
 #header {
-    background: url(images/Header-BG.png);
+    background: #518dca;
     height: 41px;
 }
 
@@ -14,28 +13,143 @@
     left:32px;
 }
 
+/* START SIDEBAR STYLES */
+
 .sidebarNav {
-    background: url(images/BG-copy-4.png);
-    width: 252px;
+    background: #2c3e50;
+    width: 232px;
     height: 100%;
+    float: left;
 }
 
 .sidebarTab {
-    background: url(images/Rectangle-8-copy-2.png);
+    background: #4f657b;
     height:32px;
 }
 
 .sidebarTabText {
     color: #9cb3ca;
-    font: 'ProximaNova';
     text-align: center;
+    padding-top: 10px;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 13px;
 }
 
 .sidebarElementContainer{
     position:relative;
 }
 
+
+
+/* START TEMPLATES STYLES */
+
 .pageButtonContainer {
     margin-left: 32px;
-    margin-top: 100px;
+    margin-top: 22px;
+}
+
+.pageButton {
+    height:34px;
+    width: 171px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.pageText {
+    color: white;
+    padding-top: 10px;
+    padding-left: 17px;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 13px;
+}
+
+#currentPage {
+    background: #518dca;
+}
+
+#addNewPage {
+    border: 2px solid #9cb3ca;
+    color: #9cb3ca;
+}
+
+
+
+/* START ELEMENTS STYLES */
+
+.tileImgContainer {
+    position: absolute;
+    left: 32px;
+    top: 22px;
+    width: 52px;
+    height: 54px;
+}
+
+.tileTextContainer {
+    position: relative;
+    padding-top: 10px;
+}
+
+.elementsTile {
+    width: 117px;
+    height: 107px;
+    background-color: #34485c;
+}
+
+.elementsTile:hover {
+    background-color:#3a4f64;
+}
+
+#titleTile {
+    float: left;
+    background: url(sprites/Element-Icons.png) 9 8;
+/*    background: url(sprites/Element-IconsTitle.png);*/
+}
+
+#textTile {
+    float: right;
+/*    background: url(sprites/Element-Icons.png) 63 8;*/
+/*    background: url(sprites/Element-IconsText.png);*/
+}
+
+#imageTile {
+    float: left;
+/*    background: url(sprites/Element-Icons.png) 117 8;*/
+/*    background: url(sprites/Element-IconsImage.png);*/
+
+}
+
+#navTile {
+    float: right;
+/*    background: url(sprites/Element-Icons.png) 171 8;*/
+/*    background: url(sprites/Element-IconsNav.png);*/
+}
+
+
+
+/* START SETTINGS STYLES */
+
+
+
+
+
+
+
+
+
+/* START MAIN CONTENT STYLES */
+
+#mainContentContainer {
+    float: left;
+}
+
+#mainContentPageButtonContainer {
+    position: absolute;
+    margin-left: 78px;
+    margin-top: 45px;
+}
+
+.mainContentImageContainer {
+}
+
+.mainContentTextContainer {
 }
