@@ -61,6 +61,8 @@ body {
     margin-left: 32px;
     margin-top: 22px;
     margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
 }
 
 .pageButton {
@@ -76,6 +78,8 @@ body {
     padding-left: 17px;
     font-family: 'proxima_nova_rgregular';
     font-size: 13px;
+    outline: 0;
+
 }
 
 #currentPage {
@@ -83,8 +87,11 @@ body {
 }
 
 #addNewPage {
-    border: 2px solid #9cb3ca;
-    color: #5d768e;
+    border: 2px solid #5d768e;
+    background-color: #2c3e50;
+    outline: none;
+
+
 }
 
 #addNewPageText {
@@ -93,6 +100,13 @@ body {
     padding-left: 17px;
     font-family: 'proxima_nova_rgregular';
     font-size: 13px;
+    background-color: #2c3e50;
+    outline: none;
+
+}
+
+input[type="text"] {
+    outline: none;
 }
 
 
@@ -159,38 +173,95 @@ body {
 
 /* START MAIN CONTENT STYLES */
 
-#mainContentContainer {
+#mainContentContainerContainer {
     position: relative;
     float: left;
 }
 
-#mainContentPageButtonContainer {
+#mainContentContainer {
     position: absolute;
-    padding-left: 75px;
-    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 75px;
+    margin-top: 45px;
+}
+
+#mainContentPageButtonContainer {
+    display: flex;
+    position: relative;
 }
 
 .activePageButton {
     width: 119px;
     height: 36px;
+    border: 2px solid #9cb3ca;
     border-radius: 4px;
-    border-color: rgba(150, 169, 187, 0.99);
     background-color: rgba(150, 169, 187, 0.99);
+    margin-right: 14px;
 }
 
 .activePageButtonText {
     text-align: center;
-    vertical-align: middle;
     font-family: 'proxima_nova_rgregular';
     font-size: 13px;
     color: white;
+    padding-top: 11px;
 }
 
 .inactivePageButton {
+    width: 119px;
+    height: 36px;
+    border: 2px solid #9cb3ca;
+    border-radius: 4px;
+    margin-right: 14px;
 }
 
-.mainContentImageContainer {
+.inactivePageButtonText {
+    text-align: center;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 13px;
+    color: rgba(150, 169, 187, 0.99);
+    padding-top: 11px;
+}
+
+#mainContentImageContainerContainer {
+    margin-top: 54px;
+    width: 813px;
+    height: 281px;
+    border: 2px solid #9cb3ca;
+    border-radius: 4px;
+    background-color:#eff2f5;
+}
+
+#mainContentImageContainer {
+    margin-left: 355px;
+    margin-top: 74px;
+}
+
+.mainContentImage {
+/*    text-align: center;*/
+}
+
+.mainContentImageText {
+    display: flex;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 13px;
+    color: rgba(150, 169, 187, 0.99);
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#plus {
+    padding-left: 7px;
+    font-family: 'proxima_nova_rgregular';
+    font-size: 20px;
+    color: rgba(150, 169, 187, 0.99);
 }
 
 .mainContentTextContainer {
+    
+}
+
+*:focus {
+    outline: none;
 }
