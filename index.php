@@ -10,12 +10,15 @@
     $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname); // make a connection handle
 
     // See if connection succeeded
-    if(mysqli_connect_errno()) {
-        die("Database connection failed: " .
-            mysqli_connect_error() . 
-            " (" .mysqli_connect_errno() . ")"
-        );
+    function checkConnectionSuccess() {
+        if(mysqli_connect_errno()) {
+            die("Database connection failed: " .
+                mysqli_connect_error() . 
+                " (" .mysqli_connect_errno() . ")"
+            );
+        }
     }
+    checkConnectionSuccess();
 
     // Perform database query
     $query = "SELECT * ";
@@ -23,19 +26,27 @@
     $query .= "WHERE visible = 1 ";
     $query .= "ORDER BY position ASC";
     $result = mysqli_query($connection, $query); // creates a resource object
-    // test if there's a query error
-    if (!$result) {
-        die("Database query failed.");
+
+
+    // See if there's a query error
+    function checkQuerySuccess($result) {
+        if (!$result) {
+            die("Database query failed.");
+        }
+    }
+    checkQuerySuccess($result);
+
+
+    function countPages($result) {
+        $numPages = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $numPages++;
+        }
+        return $numPages;
     }
 
-    $numPages = 1;
-    $pageNames = {}
 
-    while($row = mysqli_fetch_assoc($result)) {
-    // output data from each row
-    var_dump($row);
-    echo $row["pageName"] . "<br>";
-}
+    $numPages = countPages($result);
 
 ?>
 
@@ -82,9 +93,51 @@
                 </div>
                 <div class="pageButton" id="addNewPage">
                     <div id="addNewPageText">
-                        <input id="addNewPage" id="addNewPageText" placeholder="ADD NEW PAGE">
+                        <form action="index.php" method="post" class="addNewPage">
+                            <input type="text" name="newPageName" value="">
+                        </form>
                     </div>
                 </div>
+
+                <!--
+
+                Send a POST request once a page name has been entered,
+                and add it to the DOM
+
+                -->
+
+                <?php
+
+                    function addPageButton($newPageName = "PAGE") {
+                        $inactivePageButton = "<div class=\"pageButton\" id=\"inactivePageButton\">
+                                                <div class=\"pageText\">";
+                        $inactivePageButton .= $newPageName;
+                        $inactivePageButton .= "</div></div>";
+
+                        echo $inactivePageButton;
+                    }
+
+                    function pageDBInsertion($newPageName = "PAGE", $position = 2,
+                                                $visible = 1, $content = "default", $connection, $user_id) {
+                        $query = "INSERT INTO pages (";
+                        $query .= "user_id, page_name, position, visible, content";
+                        $query .= ") VALUES (";
+                        $query .= "{$user_id}, '{$newPageName}', {$position}, {$visible}, {$content}";
+                        $query .= ")";
+                        $result = mysqli_query($connection, $query);
+                        checkQuerySuccess($result);
+                    }
+
+                    if (isset($_POST["newPageName"])) {
+                        $newPageName = $_POST["newPageName"];
+                        addPageButton($newPageName);
+                        pageDBInsertion($newPageName, 1, 1, "default", $connection, 1);
+                    }
+
+                ?>
+
+
+
             </div>
 
         </div>
@@ -166,7 +219,8 @@
 
                 <?php
 
-                function addInactivePage($newPageName) {
+                // $newPageName is an optional parameter
+                function addInactivePage($newPageName = "PAGE") {
                     $inactivePageButton = "<div class=\"inactivePageButton\">
                     <div class=\"inactivePageButtonText\">";
                     $inactivePageButton .= $newPageName;
@@ -178,9 +232,12 @@
 
                 if($numPages > 1) {
                     for ($i = 0; $i < $numPages - 1; $i++) {
-                        addInactivePage("YOLO");
+                        addInactivePage();
                     }
                 }
+
+                $_POST = array();
+
 
                 ?>
 

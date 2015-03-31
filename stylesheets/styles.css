@@ -83,7 +83,11 @@ body {
 }
 
 #currentPage {
-    background: #518dca;
+    background-color: #518dca;
+}
+
+#inactivePageButton {
+    background-color: #d86a65;
 }
 
 #addNewPage {
