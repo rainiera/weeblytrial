@@ -1,13 +1,13 @@
 <?php
     session_start();
 
-
     // Make a database connection
     $dbhost = "localhost";
     $dbuser = "weeblytrial_cms";
     $dbpass = "pingpong";
     $dbname = "weeblytrial";
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname); // make a connection handle
+    // Make a connection handle
+    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
     // See if connection succeeded
     function checkConnectionSuccess() {
@@ -20,7 +20,7 @@
     }
     checkConnectionSuccess();
 
-    // Perform database query
+    // Perform database query for the pages table and order them by position
     $query = "SELECT * ";
     $query .= "FROM pages ";
     $query .= "WHERE visible = 1 ";
@@ -36,7 +36,10 @@
     }
     checkQuerySuccess($result);
 
+// Set the number of pages and the array of page names
 
+    // Count the number of pages
+    $result = mysqli_query($connection, $query); // creates a resource object
     function countPages($result) {
         $numPages = 0;
         while ($row = mysqli_fetch_row($result)) {
@@ -44,7 +47,10 @@
         }
         return $numPages;
     }
+    $numPages = countPages($result);
 
+    // Make an array of page names from the pages table
+    $result = mysqli_query($connection, $query); // creates a resource object
     function makePageNameArray($result) {
         $pageNames = array();
         while ($row = mysqli_fetch_row($result)) {
@@ -52,10 +58,6 @@
         }
         return $pageNames;
     }
-
-    $result = mysqli_query($connection, $query); // creates a resource object
-    $numPages = countPages($result);
-    $result = mysqli_query($connection, $query); // creates a resource object
     $pageNames = makePageNameArray($result);
 
 ?>
@@ -149,6 +151,7 @@
                         addpageButton($name);
                     }
                 }
+
                 
                 ?>
 
