@@ -6,13 +6,13 @@
 ###Notes:
 The project is hosted on a DigitalOcean server running LAMP on Ubuntu 14.04.
 
-The URLs above may not be updating as quickly as I would have wished them to, or there might be something wrong with the Apache config files. In that case, I'll prepare a demonstration later from my localhost with [screen capture](http://www.globaldelight.com/voila/index.php) software and post a link on here within the first half of the week.
+~~The URLs above may not be updating as quickly as I would have wished them to, or there might be something wrong with the Apache config files. In any case, I'll prepare a demonstration later from my localhost with screen capture software and post a link on here within the first half of the week.~~ EDIT: It was a MySQL connection problem, fixed now.
 
 The CSS and PHP have been entirely refactored for maintainability and clarity. **[This](https://github.com/rainiera/weeblytrial/blob/master/includes/functions.php)** is the new functions page, which was all inline when I learned PHP/MySQL. On the backend, the persistence layer (for the purposes of this demo) is a database that contains three tables:
 
 **```pages```** has 5 fields: ```id```, ```user_id```, ```page_name```, ```html_content```, and ```visible```. ```user_id``` is a foreign key that points to ```id``` in the ```users``` table. **```users```** has 3 fields: ```id```, ```username```, and ```hashed_password```. **```activity_log```** has 3 fields: ```id```, ```user_id```, and ```lpa_id``` (or "last_page_accessed_id"). ```user_id``` and ```lpa_id``` are foreign keys that point to their respective tables' primary keys (```id```). Whenever the page is loaded or there is interaction with an input field such as "Add New Page", creates, reads, or updates are performed on the database. Whenever a page is deleted, the ```visible``` field of that page is set to 0. This is so that deletes are performed sparingly. Upon viewing the page, however, only the pages with ```visible = 1``` are represented. The **```activity_log```** table keeps track of which page the user accessed last so that its button may be styled appropriately when PHP constructs the DOM, and the user can log out and log back in but still see the page that they were on.
 
-The only code that was not made from scratch was a few font stylesheets that had to be processed to be made websafe by [Font Squirrel](http://www.fontsquirrel.com/tools/webfont-generator).
+Currently the ```$user_id``` variable is hard-coded for testing purposes. Sign up page to be completed. The only code that was not made from scratch was a few font stylesheets that had to be processed to be made websafe by [Font Squirrel](http://www.fontsquirrel.com/tools/webfont-generator).
 
 Thanks for reading, Weebly :)
 
@@ -31,6 +31,7 @@ Thanks for reading, Weebly :)
     [] jQuery to add a new page button if there is text in the s-add-page-button input box and
     the user clicks on that tile
     [] remove input box borders
+    [] create login page for users
 
 ###Backend bugs/to-do
 ------
