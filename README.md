@@ -2,7 +2,21 @@
 
 ###http://notweebly.rainier.io OR http://104.131.92.112
 
-##Frontend bugs/to-do
+
+###Notes:
+The project is hosted on a DigitalOcean server running LAMP on Ubuntu 14.04.
+
+The URLs above may not be updating as quickly as I would have wished them to, or there might be something wrong with the Apache config files. In that case, I'll prepare a demonstration later from my localhost with [screen capture](http://www.globaldelight.com/voila/index.php) software and post a link on here within the first half of the week.
+
+The CSS and PHP have been entirely refactored for maintainability and clarity. **[This](https://github.com/rainiera/weeblytrial/blob/master/includes/functions.php)** is the new functions page, which was all inline when I learned PHP/MySQL. On the backend, the persistence layer (for the purposes of this demo) is a database that contains three tables:
+
+**```pages```** has 5 fields: ```id```, ```user_id```, ```page_name```, ```html_content```, and ```visible```. ```user_id``` is a foreign key that points to ```id``` in the ```users``` table. **```users```** has 3 fields: ```id```, ```username```, and ```hashed_password```. **```activity_log```** has 3 fields: ```id```, ```user_id```, and ```lpa_id``` (or "last_page_accessed_id"). ```user_id``` and ```lpa_id``` are foreign keys that point to their respective tables' primary keys (```id```). Whenever the page is loaded or there is interaction with an input field such as "Add New Page", creates, reads, or updates are performed on the database. Whenever a page is deleted, the ```visible``` field of that page is set to 0. This is so that deletes are performed sparingly. Upon viewing the page, however, only the pages with ```visible = 1``` are represented. The **```activity_log```** table keeps track of which page the user accessed last so that its button may be styled appropriately when PHP constructs the DOM, and the user can log out and log back in but still see the page that they were on.
+
+The only code that was not made from scratch was a few font stylesheets that had to be processed to be made websafe by [Font Squirrel](http://www.fontsquirrel.com/tools/webfont-generator).
+
+Thanks for reading, Weebly :)
+
+###Frontend bugs/to-do
 ------
     San Francisco:
     [x] some sprite assets weren't websafe, just re-exported the .pngs to .png in Preview
@@ -12,13 +26,13 @@
     [X] major CSS name and <div> container refactoring for maintainability, clarity,
     and adherence to convention
     [X] refactor the HTML and PHP into templates and functions to make it more modular 
+    [X] vertical divider between ELEMENTS tiles in the sidebar
     [] make the SITE GRID button under SETTINGS toggle
     [] jQuery to add a new page button if there is text in the s-add-page-button input box and
     the user clicks on that tile
     [] remove input box borders
-    [X] vertical divider between ELEMENTS tiles in the sidebar
 
-##Backend bugs/to-do
+###Backend bugs/to-do
 ------
     San Francisco:
     [x] altered permissions for directories that Apache server couldn't access, including
@@ -35,4 +49,5 @@
     [X] setup database table "users"
     [X] database fencepost - there should always be one page and one page button - fix by
     adding a page by default when user is added
+    [] prevent SQL injection by prepared statements/parameterization
     [] implement user authentication layer
