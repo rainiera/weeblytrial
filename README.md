@@ -1,6 +1,6 @@
 # weeblytrial
 
-###notweebly.rainier.io OR http://104.131.92.112
+###http://notweebly.rainier.io OR http://104.131.92.112
 
 ##Frontend bugs/to-do
 ------
@@ -12,7 +12,6 @@
     [X] major CSS name and <div> container refactoring for maintainability, clarity,
     and adherence to convention
     [X] refactor the HTML and PHP into templates and functions to make it more modular 
-    [] make the plus symbol next to ADD IMAGE an image
     [] make the SITE GRID button under SETTINGS toggle
     [] jQuery to add a new page button if there is text in the s-add-page-button input box and
     the user clicks on that tile
@@ -34,7 +33,6 @@
     [x] Setup subdomain at personal website to host Mini Weebly, "notweebly.rainier.io"
     (if the DNS hasn't propogated yet, this is a sure-fire URL: http://104.131.92.112/)
     [X] setup database table "users"
-    [X] database fencepost - there should always be one page and one page button. That should be
-    part of the database even if we delete the columns from the database. Solution might be
-    to just DELETE FROM pages WHERE {id > first page id}
+    [X] database fencepost - there should always be one page and one page button - fix by
+    adding a page by default when user is added
     [] implement user authentication layer
