@@ -1,10 +1,10 @@
 # weeblytrial
 
-###http://notweebly.rainier.io OR http://104.131.92.112
+###http://notweebly.rainier.io
 
 
 ###Notes:
-The project is hosted on a DigitalOcean server running LAMP on Ubuntu 14.04.
+The project is hosted on a DigitalOcean VPS running LAMP on Ubuntu 14.04.
 
 ~~The URLs above may not be updating as quickly as I would have wished them to, or there might be something wrong with the Apache config files. In any case, I'll prepare a demonstration later from my localhost with screen capture software and post a link on here within the first half of the week.~~ EDIT: It was a MySQL connection problem, fixed now.
 
@@ -27,10 +27,9 @@ Thanks for reading, Weebly :)
     and adherence to convention
     [X] refactor the HTML and PHP into templates and functions to make it more modular 
     [X] vertical divider between ELEMENTS tiles in the sidebar
+    [x] remove input box borders
+    [] jQuery to show the edit and delete buttons in the button containers
     [] make the SITE GRID button under SETTINGS toggle
-    [] jQuery to add a new page button if there is text in the s-add-page-button input box and
-    the user clicks on that tile
-    [] remove input box borders
     [] create login page for users
 
 ###Backend bugs/to-do
@@ -50,5 +49,6 @@ Thanks for reading, Weebly :)
     [X] setup database table "users"
     [X] database fencepost - there should always be one page and one page button - fix by
     adding a page by default when user is added
+    [x] add/delete/rename functions for the database
     [] prevent SQL injection by prepared statements/parameterization
     [] implement user authentication layer

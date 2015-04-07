@@ -81,14 +81,14 @@
 	// Intended to add .s-inactive-page-button to the #pages-that-exist-container
 	// Intended to add .m-inactive-page-button to the #m-page-button-container
 	function add_new_page($user_id, $new_page_name = "PAGE",
-							$html_content = "<p>Default new page content</p>") {
+							$html_content = "<p>Default new page content</p>", $visible) {
 		global $db;
 
 		$query = "INSERT INTO pages (";
-		$query .= "user_id, page_name, html_content";
+		$query .= "user_id, page_name, html_content, visible";
 		$query .= ") VALUES (";
-		$query .= "{$user_id}, {$new_page_name}, {$html_content}";
-		$query .= ")";
+		$query .= "{$user_id}, {$new_page_name}, {$html_content}, {$visible}";
+		$query .= ") ";
 		$result = mysqli_query($db, $query);
 		confirm_query($result);
 	}

@@ -2,10 +2,20 @@
 <?php require_once("../includes/functions.php"); ?>
 <?php include("../includes/layouts/header.php"); ?>
 
-
 <?php
     // hard-code the $user_id in before auth is implemented for testing purposes
     $user_id = 1;
+
+    if (isset($_GET["user_id"])) {
+        $user_id = $_GET["user_id"];
+        $selected_page_id = null;
+    } elseif (isset($_GET["page_name"])) {
+        $user_id = null;
+        $selected_page_id = $_GET["page_name"];
+    } else {
+        $user_id = null;
+        $selected_page_id = null;
+    }
 ?>
 
 <div id="container">
@@ -20,10 +30,26 @@
         <div class="sidebar-pane">
             <div class="s-page-button-container">
                 <div id="pages-that-exist-container">
-                    <?php echo sidebar_page_list($user_id); ?>
+
+                    <?php
+                        if (isset($_POST["new_page_name"])) {
+                            $new_page_name = $_POST["new_page_name"];
+                            add_new_page($user_id, "\"{$new_page_name}\"",
+                                "\"<p>{$new_page_name} is a new page</p>\"", 1);
+                        }
+                        echo sidebar_page_list($user_id);
+                    ?>
+                    
                 </div>
                 <div id="s-add-page-button">
-                    <div id="s-add-page-button-text">ADD NEW PAGE</div>
+                    <div id="s-add-page-button-text">
+                        <form action="index.php" method="post" class="s-add-page-button-text">
+                             <input type="text" placeholder="ADD NEW PAGE"
+                                 onfocus="this.placeholder = ''"
+                                 onblur="this.placeholder = 'ADD NEW PAGE'"
+                                 name="new_page_name"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

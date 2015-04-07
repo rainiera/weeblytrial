@@ -111,12 +111,18 @@ body {
 
 #s-add-page-button-text {
     color: #5d768e;
-    padding-top: 10px;
-    padding-left: 17px;
+    padding-top: 8px;
+    padding-left: 14px;
+    outline: none;
+}
+
+input {
+    background-color: #2c3e50;
+    border: none;
+    outline: none;
+    color:#4f657b;
     font-family: 'proxima_nova_rgregular';
     font-size: 13px;
-    background-color: #2c3e50;
-    outline: none;
 }
 
 
