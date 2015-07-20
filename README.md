@@ -1,3 +1,5 @@
+As of July 2015 the DO instance is off. Next year :)
+
 # weeblytrial
 
 ###http://notweebly.rainier.io
